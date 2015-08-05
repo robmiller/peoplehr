@@ -1,11 +1,7 @@
 require 'spec_helper'
 
-describe Peoplehr do
+describe PeopleHR do
   it 'has a version number' do
-    expect(Peoplehr::VERSION).not_to be nil
-  end
-
-  it 'does something useful' do
-    expect(false).to eq(true)
+    expect(PeopleHR::VERSION).not_to be nil
   end
 end

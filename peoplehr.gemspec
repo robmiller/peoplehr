@@ -5,7 +5,7 @@ require 'peoplehr/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "peoplehr"
-  spec.version       = Peoplehr::VERSION
+  spec.version       = PeopleHR::VERSION
   spec.authors       = ["Rob Miller"]
   spec.email         = ["rob@bigfish.co.uk"]
 
