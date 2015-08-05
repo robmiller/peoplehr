@@ -7,3 +7,4 @@ require "virtus"
 
 require "peoplehr/api"
 require "peoplehr/employee"
+require "peoplehr/employees"

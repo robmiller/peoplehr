@@ -31,7 +31,13 @@ module PeopleHR
         req.body = payload
       end
 
-      JSON.parse(response.body)
+      response = JSON.parse(response.body)
+
+      if !response || response["isError"]
+        fail APIError
+      end
+
+      response
     rescue JSON::ParserError
       fail BadResponse
     end
