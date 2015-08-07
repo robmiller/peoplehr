@@ -1,4 +1,5 @@
 require "json"
+require "typhoeus/adapters/faraday"
 
 module PeopleHR
   class API
@@ -12,11 +13,11 @@ module PeopleHR
       @connection = connection ||
         Faraday.new(url: API_ROOT) do |faraday|
           faraday.request :url_encoded
-          faraday.adapter Faraday.default_adapter
+          faraday.adapter :typhoeus
         end
     end
 
-    def request(action, params = {})
+    def request(endpoint, action, params = {})
       request = {
         "APIKey" => api_key,
         "Action" => action,
@@ -26,7 +27,7 @@ module PeopleHR
       payload = JSON.generate(payload)
 
       response = connection.post do |req|
-        req.url "/"
+        req.url "/#{endpoint}"
         req.headers["Content-Type"] = "application/json"
         req.body = payload
       end

@@ -61,7 +61,7 @@ module PeopleHR
     attr_reader :api
 
     def api_data
-      api.request("GetAllEmployeeDetail", "IncludeLeavers" => false)
+      api.request("Employee", "GetAllEmployeeDetail", "IncludeLeavers" => false)
     end
 
     def t(*args)

@@ -19,16 +19,16 @@ module PeopleHR
 
     describe "#request" do
       it "makes an API request" do
-        stubs.post("/") { |env| [200, {}, '{ "isError": false }'] }
+        stubs.post("/Employee") { |env| [200, {}, '{ "isError": false }'] }
 
-        response = api.request("GetAllEmployeeDetail")
+        response = api.request("Employee", "GetAllEmployeeDetail")
         expect(response).to eq({ "isError" => false })
       end
 
       it "handles malformed JSON" do
-        stubs.post("/") { |env| [200, {}, '{ malformed: yes'] }
+        stubs.post("/Employee") { |env| [200, {}, '{ malformed: yes'] }
 
-        expect{api.request("GetAllEmployeeDetail")}.to raise_error(API::BadResponse)
+        expect{api.request("Employee", "GetAllEmployeeDetail")}.to raise_error(API::BadResponse)
       end
     end
   end

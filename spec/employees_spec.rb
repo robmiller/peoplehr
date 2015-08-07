@@ -4,7 +4,7 @@ module PeopleHR
   describe Employees do
     let(:stubs) { Faraday::Adapter::Test::Stubs.new }
     let(:test) do
-      stubs.post("/") do |env|
+      stubs.post("/Employee") do |env|
         [
           200,
           {},

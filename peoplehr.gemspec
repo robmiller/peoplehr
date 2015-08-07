@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "addressable", "~> 2.3"
   spec.add_runtime_dependency "faraday", "~> 0.9.1"
+  spec.add_runtime_dependency "typhoeus", "~> 0.7.2"
   spec.add_runtime_dependency "transproc", "~> 0.3.0"
   spec.add_runtime_dependency "virtus", "~> 1.0"
 
