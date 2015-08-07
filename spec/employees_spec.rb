@@ -4,6 +4,14 @@ module PeopleHR
   describe Employees do
     let(:stubs) { Faraday::Adapter::Test::Stubs.new }
     let(:test) do
+      stubs.post("/") do |env|
+        [
+          200,
+          {},
+          EMPLOYEE_DATA
+        ]
+      end
+
       Faraday.new do |builder|
         builder.adapter :test, stubs
       end
@@ -17,25 +25,10 @@ module PeopleHR
 
     describe "#all" do
       it "lists all employees" do
-        stubs.post("/") do |env|
-          [
-            200,
-            {},
-            EMPLOYEE_DATA
-          ]
-        end
         expect(employees.all.length).to eq(2)
       end
 
       it "returns Employee objects" do
-        stubs.post("/") do |env|
-          [
-            200,
-            {},
-            EMPLOYEE_DATA
-          ]
-        end
-
         em = employees.all
 
         expect(em[0]).to be_an(Employee)
@@ -43,6 +36,20 @@ module PeopleHR
 
         expect(em[1]).to be_an(Employee)
         expect(em[1].first_name).to eq("Esme")
+      end
+    end
+
+    describe "#each" do
+      it "iterates over employees" do
+        employees.each do |employee|
+          expect(employee).to be_an(Employee)
+        end
+      end
+
+      it "implements enumerable methods" do
+        employee = employees.find { |e| e.first_name == "Bob" }
+
+        expect(employee.first_name).to eq("Bob")
       end
     end
 

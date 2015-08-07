@@ -38,7 +38,21 @@ employees:
 	employees.all
 
 This returns an array of `Employee` objects, each of which contains the
-information stored in PeopleHR for that particular employee.
+information stored in PeopleHR for that particular employee. To iterate
+over employees, you can just use `Employees#each`:
+
+	employees.each do |employee|
+		puts "#{employee.first_name} #{employee.last_name}"
+		puts "Birthday: #{employee.date_of_birth}"
+	end
+
+This allows the use of `Enumerable` methods to filter employees:
+
+	bob_smith = employees.find { |e| e.first_name == "Bob" && e.last_name == "Smith" }
+	
+	older_than_50 = employees.select { |e| Date.today - e.date_of_birth > (365*50) }
+	
+	everyone_but_designers = employees.reject { |e| e.department == "Design" }
 
 ## Development
 

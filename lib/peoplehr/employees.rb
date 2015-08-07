@@ -50,6 +50,12 @@ module PeopleHR
       transformation.call(api_data)
     end
 
+    def each(*args, &block)
+      all.each(*args, &block)
+    end
+
+    include Enumerable
+
     private
 
     attr_reader :api
