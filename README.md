@@ -29,7 +29,7 @@ Or install it yourself as:
 At the moment, the library can be used only to fetch employee data.
 
 The `Employees` class functions as a repository, with finder methods to
-restrict the data returned. Use `Employees.all` to get data for all
+restrict the data returned. Use `Employees#all` to get data for all
 employees:
 
 	api = PeopleHR::API.new(api_key: "abc123abc123")
