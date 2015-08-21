@@ -32,15 +32,15 @@ module PeopleHR
         req.body = payload
       end
 
-      response = JSON.parse(response.body)
+      data = JSON.parse(response.body)
 
-      if !response || response["isError"]
+      if !data || data["isError"]
         fail APIError
       end
 
-      response
+      data
     rescue JSON::ParserError
-      fail BadResponse
+      fail BadResponse.new("Bad JSON returned by the API:\n\n#{response.body}")
     end
 
     private
