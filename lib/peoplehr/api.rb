@@ -32,15 +32,19 @@ module PeopleHR
         req.body = payload
       end
 
+      if response.body.empty?
+        fail APIError.new("API returned an empty response")
+      end
+
       data = JSON.parse(response.body)
 
       if !data || data["isError"]
-        fail APIError
+        fail APIError.new("API returned an error")
       end
 
       data
     rescue JSON::ParserError
-      fail BadResponse.new("Bad JSON returned by the API:\n\n#{response.body}")
+      fail BadResponse.new("API returned malformed JSON:\n\n#{response.body}")
     end
 
     private
