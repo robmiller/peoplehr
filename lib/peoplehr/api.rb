@@ -5,7 +5,7 @@ module PeopleHR
   class API
     API_ROOT = Addressable::URI.parse("https://api.peoplehr.net/")
 
-    class APIError < StandardError; end
+    class APIError < PeopleHR::Error; end
     class BadResponse < APIError; end
 
     def initialize(api_key:, connection: nil)
