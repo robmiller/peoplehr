@@ -19,13 +19,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "addressable", "~> 2.3"
-  spec.add_runtime_dependency "faraday", "~> 0.9.1"
-  spec.add_runtime_dependency "typhoeus", "~> 0.7.2"
-  spec.add_runtime_dependency "transproc", "~> 0.3.0"
+  spec.add_runtime_dependency "addressable", "~> 2.5"
+  spec.add_runtime_dependency "faraday", "~> 0.15.2"
+  spec.add_runtime_dependency "typhoeus", "~> 1.3"
+  spec.add_runtime_dependency "transproc", "~> 1.0"
   spec.add_runtime_dependency "virtus", "~> 1.0"
 
-  spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "rspec"
 end
