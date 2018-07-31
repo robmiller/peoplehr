@@ -30,6 +30,8 @@ module PeopleHR
               "Company",
               "Location",
               "Department",
+              "ReportsToEmployeeId",
+              "ProbationEndDate",
             ]
           ) >>
           t(
@@ -43,7 +45,7 @@ module PeopleHR
             }
           ) >>
           t(:symbolize_keys) >>
-          t(:rename_keys, { employee_id: :id }) >>
+          t(:rename_keys, { employee_id: :id, email_id: :email, reports_to_employee_id: :manager_id }) >>
           t(:convert_to_employee)
         )
 
